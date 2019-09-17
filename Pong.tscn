@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Pong.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 1024
+
+[sub_resource type="GradientTexture" id=1]
+width = 20
+
+[node name="Pong" type="Node2D"]
+position = Vector2( -3.70117, 0 )
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 1, 600 )
+texture = SubResource( 3 )
+
+[node name="Ball" type="KinematicBody2D" parent="."]
+position = Vector2( 517.881, 303.391 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ball"]
+polygon = PoolVector2Array( -6.96951, -5.7599, 7.62994, -6.63586, 6.46198, 5.91965, -6.09357, 7.08762 )
+
+[node name="Sprite" type="Sprite" parent="Ball"]
+position = Vector2( 0.307358, 0.153702 )
+scale = Vector2( 0.723379, 14.2163 )
+texture = SubResource( 1 )
+
+[node name="PlayerPaddle" type="KinematicBody2D" parent="."]
+position = Vector2( 127.768, 300.104 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerPaddle"]
+polygon = PoolVector2Array( -8.51294, -82.3859, 4.86691, -85.7309, 7.37564, 81.9354, -7.25858, 82.3535 )
+
+[node name="Sprite" type="Sprite" parent="PlayerPaddle"]
+position = Vector2( -0.890121, -1.05377 )
+scale = Vector2( 0.723379, 165.175 )
+texture = SubResource( 1 )
+
+[node name="AIPaddle" type="KinematicBody2D" parent="."]
+position = Vector2( 926.46, 296.601 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AIPaddle"]
+polygon = PoolVector2Array( -8.51294, -82.3859, 4.86691, -85.7309, 7.37564, 81.9354, -7.25858, 82.3535 )
+
+[node name="Sprite" type="Sprite" parent="AIPaddle"]
+position = Vector2( -0.890121, -1.05377 )
+scale = Vector2( 0.723379, 165.175 )
+texture = SubResource( 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="."]
+margin_left = 6.0
+margin_top = 2.0
+margin_right = 131.0
+margin_bottom = 75.0
+rect_scale = Vector2( 8, 8 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Score"
